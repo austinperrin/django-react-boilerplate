@@ -1,0 +1,102 @@
+# ======================================================================
+# PYTHON / DJANGO ARTIFACTS
+# ======================================================================
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Compiled bytecode in nested migrations directories
+**/migrations/**/*.pyc
+
+# Local databases (never needed in containers)
+*.db
+*.sqlite3
+
+
+# ======================================================================
+# ENVIRONMENT FILES
+# Environment variables should not be copied into Docker build context.
+# These values are injected externally via docker-compose or CI/CD.
+# ======================================================================
+.env
+.env.*
+!.env.example   # Keep templates
+
+
+# ======================================================================
+# PYTHON ENVIRONMENTS
+# Virtual environments should never be part of a Docker build context.
+# ======================================================================
+venv/
+env/
+.venv/
+.pyenv/
+
+
+# ======================================================================
+# DJANGO GENERATED DIRECTORIES
+# These are runtime artifacts and should not be built into images.
+# They are mounted or created at runtime.
+# ======================================================================
+media/
+static/
+staticfiles/
+tmp/
+logs/
+
+
+# ======================================================================
+# TESTING AND DEVELOPMENT ARTIFACTS
+# ======================================================================
+.coverage
+coverage/
+htmlcov/
+pytest_cache/
+.mypy_cache/
+ruff_cache/
+.pytest_cache/
+.tox/
+
+
+# ======================================================================
+# EDITOR / OS / TOOLING FILES
+# ======================================================================
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+
+# ======================================================================
+# GIT METADATA
+# Git context is never required inside Docker builds.
+# ======================================================================
+.git/
+.gitignore
+.gitattributes
+
+
+# ======================================================================
+# PROJECT DOCUMENTATION / NOTES
+# Documentation is typically not needed in the build context.
+# ======================================================================
+README*
+docs/
+notes/
+*.md
+
+
+# ======================================================================
+# MONOREPO NOISE (if this backend is inside a larger repo)
+# Prevent other services' directories from leaking into this build context.
+# ======================================================================
+node_modules/
+dist/
+build/
+package.json
+package-lock.json
+yarn.lock
+pnpm-lock.yaml

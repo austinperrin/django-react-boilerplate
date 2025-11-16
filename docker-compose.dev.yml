@@ -1,0 +1,66 @@
+# ======================================================================
+# DEVELOPMENT COMPOSE CONFIGURATION
+# Provides services required for local development. All configuration
+# values are loaded from the project-level .env file. This file should
+# not be used for production deployments.
+# ======================================================================
+services:
+
+  # --------------------------------------------------------------------
+  # Backend Application Service
+  #
+  # Builds the Django development image and runs the server with hot
+  # reload enabled. The local project directory is bind-mounted to allow
+  # code changes without rebuilding the container. Environment variables
+  # such as DJANGO_DATABASE_URL and DJANGO_SETTINGS_MODULE are expected to be
+  # defined in the root .env file.
+  # --------------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      target: dev
+    container_name: backend-dev
+
+    # Load environment variables from the root-level .env file
+    env_file:
+      - .env
+
+    # Bind mount source code for live reload and interactive development
+    volumes:
+      - ./backend:/app
+
+    # Expose Django development server
+    ports:
+      - "8000:8000"
+
+    # Ensures the container restarts automatically if needed
+    restart: unless-stopped
+
+# ======================================================================
+# FRONTEND SERVICE (Placeholder)
+#
+# A future frontend service should be defined here once the Vite/React
+# development environment is added. It will typically include:
+#
+#   - A development server for hot module replacement
+#   - Bind mounts for local source code
+#   - Environment variable loading via env_file
+#   - A dedicated Dockerfile under ./frontend
+#   - Host port mapping for the frontend dev server (for example 5173)
+#
+# Example structure:
+#
+#   frontend:
+#     build:
+#       context: ./frontend
+#       target: dev
+#     container_name: frontend-dev
+#     env_file:
+#       - .env
+#     volumes:
+#       - ./frontend:/app
+#     ports:
+#       - "5173:5173"
+#     restart: unless-stopped
+#
+# ======================================================================

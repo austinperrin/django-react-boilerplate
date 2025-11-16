@@ -1,0 +1,14 @@
+# ======================================================================
+# PRODUCTION REQUIREMENTS
+# Dependencies required for runtime environments. These packages support
+# application serving, performance, and production-grade behavior. Only
+# add packages that are strictly necessary for deployed environments.
+# ======================================================================
+
+-r base.txt
+
+# WSGI/ASGI application server
+gunicorn>=22.0
+
+# Optional static file handling (enable if needed)
+whitenoise>=6.0
