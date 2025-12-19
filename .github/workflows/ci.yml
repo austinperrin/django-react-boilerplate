@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  todo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: echo "CI workflow to be defined (tests, lint, builds)."

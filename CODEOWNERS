@@ -1,0 +1,17 @@
+# CODEOWNERS ensures reviewers are auto-requested per path.
+# Adjust as the team grows. Example entries below; replace with real owners.
+
+# Default owners (fallback)
+* @austinperrin
+
+# Docs
+/docs/ @austinperrin
+
+# Infra
+/infra/ @austinperrin
+
+# Services
+/services/backend/ @austinperrin
+/services/frontend/ @austinperrin
+
+# Packages/scripts/configs can be added similarly as collaborators join.
