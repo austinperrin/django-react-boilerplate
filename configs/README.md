@@ -15,7 +15,7 @@ Central repository for environment-agnostic configuration artifacts (env file sa
 
 ## Usage
 
-1. Copy the relevant `.env.example` files into service directories and fill tenant-specific values.
+1. Copy the `.env.backend.example` and `.env.frontend.example` templates to the repo root as `.env.backend` and `.env.frontend`, then fill tenant-specific values.
 2. Reference lint configs from service/package tooling (e.g., symlink or extend).
 3. Update policy templates as compliance requirements evolve.
 
