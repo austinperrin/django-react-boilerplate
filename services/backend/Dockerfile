@@ -10,10 +10,14 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
     PIP_DISABLE_PIP_VERSION_CHECK=on
 
 WORKDIR /app
-COPY . /app
 
-# TODO: replace with actual dependency install steps.
-RUN echo "Backend dependencies/install steps go here"
+# Install Python dependencies for development.
+COPY requirements/base.txt requirements/base.txt
+COPY requirements/dev.txt requirements/dev.txt
+RUN pip install --upgrade pip setuptools wheel \
+    && pip install -r requirements/dev.txt
+
+COPY . /app
 
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
 
