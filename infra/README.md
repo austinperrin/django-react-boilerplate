@@ -13,9 +13,9 @@ infra/
 
 ## Environment Strategy
 
-- **Development**: `docker-compose.dev.yml` orchestrates backend, frontend, and runtime dependencies (e.g., Redis). Postgres is external—use the same connection settings as production (local Postgres install or managed instance).
+- **Development**: `docker-compose.dev.yml` orchestrates backend, frontend, and runtime dependencies (e.g., Redis). Postgres is external—use a dedicated dev database instance. When running Docker on macOS/Windows against a host DB, use `host.docker.internal` in `DATABASE_URL`. Linux development is not a target path; assume Linux hosts use remote databases in production contexts.
 - **Testing**: optional `docker-compose.test.yml` or CI workflow containers for integration/e2e suites. Tests should target an external Postgres instance seeded via fixtures/migrations.
-- **Production**: compose file per tenant deployment plus IaC modules that provision infrastructure (networking, databases, secrets). Keep provider-agnostic patterns with hooks for cloud-specific modules. Each tenant gets its own remote Postgres instance.
+- **Production**: compose file per tenant deployment plus IaC modules that provision infrastructure (networking, databases, secrets). Keep provider-agnostic patterns with hooks for cloud-specific modules. Each tenant gets its own remote Postgres instance (distinct from dev).
 
 ## Principles
 
