@@ -6,6 +6,7 @@ System diagrams, data flows, deployment topology, and integration contracts.
 
 - `system-overview.md` – textual overview of services, data flow, observability.
 - `infra/topology.md` – baseline infrastructure diagram and environment separation.
+- `tenant-topology.md` – per-tenant multi-service deployment layout.
 
 ## Additional Sections to Populate
 

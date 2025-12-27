@@ -21,5 +21,6 @@ Authoritative starting point for all project documentation. Each section below l
 ## Next Steps
 
 - Reference ADR-0001 for repo/documentation layout; draft follow-up ADRs (auth strategy, CI/CD, portal architecture).
-- Add initial standards for branching, security, and testing as they are defined.
-- Populate runbooks once CI/CD and operational flows are implemented.
+- Review the internal roadmap and tenant topology docs as decisions evolve.
+- Keep standards documents aligned as tooling and implementation land.
+- Expand runbooks once CI/CD and operational flows are implemented.

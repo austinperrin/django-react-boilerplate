@@ -11,6 +11,9 @@ React (JavaScript) app powered by Vite. Serves as the primary user interface lay
 
 ## Layout
 
+Scaffolding for the frontend app is still pending; the structure below
+describes the intended target layout once the Vite project is created.
+
 ```
 services/frontend/
 ├── src/

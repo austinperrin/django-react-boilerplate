@@ -15,7 +15,7 @@
 ## User Types
 
 - Tenants define custom user types (e.g., parent, student, faculty, vendor). Each user type maps to RBAC roles and portal experiences.
-- Default roles include `tenant-admin`, `support`, `standard-user`. Additional roles documented in RBAC matrix (forthcoming).
+- Default roles include `tenant-admin`, `support`, `standard-user`. Additional roles live in the RBAC matrix and will evolve as Milestone 2 lands.
 
 ## Lifecycle
 

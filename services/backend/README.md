@@ -11,6 +11,9 @@ Django + Django REST Framework API that powers the mono-repo. This document capt
 
 ## Layout
 
+The domain app structure below is planned for Milestone 2 and is not
+scaffolded yet in the repo.
+
 ```
 services/backend/
 ├── apps/
