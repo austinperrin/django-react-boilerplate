@@ -26,8 +26,11 @@ infra/
 
 ## Usage
 
-- Copy `.env.backend` / `.env.frontend` from templates in `configs/env/`.
+- Run `scripts/bootstrap/dev.sh` to create `.env` files, then update values.
+- If you prefer manual setup, copy `.env.backend` / `.env.frontend` from templates in `configs/env/`.
 - From the repo root, run `docker compose -f infra/docker/docker-compose.dev.yml up --build`.
+- Include the frontend profile when running the Vite dev server: `docker compose -f infra/docker/docker-compose.dev.yml --profile frontend up --build`.
+- Run `npm install` in `services/frontend/` when using the frontend bind mount.
 - Backend/frontend Dockerfiles live under `services/backend/` and `services/frontend/`; update them as code is added.
 
 ## Next Steps

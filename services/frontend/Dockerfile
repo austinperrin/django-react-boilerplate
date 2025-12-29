@@ -10,10 +10,10 @@ ENV NODE_ENV=development
 WORKDIR /app
 
 # Copy dependency manifests first to maximize layer caching.
-COPY package*.json . 2>/dev/null || true
+COPY package*.json ./
 
-# TODO: replace with actual dependency install steps.
-RUN npm install || true
+# Install dependencies.
+RUN npm install
 
 COPY . .
 

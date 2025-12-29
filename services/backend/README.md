@@ -47,3 +47,7 @@ services/backend/
 - Draft ADR for authentication/identity strategy.
 - Scaffold initial domain apps (`common`, `identity`) focusing on tenant-aware models.
 - Integrate testing/linting workflow (pytest, mypy, bandit) aligned with CI/CD.
+
+## Local Tooling
+
+- Run type checks with `mypy services/backend`.

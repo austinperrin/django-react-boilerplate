@@ -51,6 +51,7 @@ services:
       - "5173:5173"
     volumes:
       - ../../services/frontend:/app
+      - frontend-node-modules:/app/node_modules
     depends_on:
       - backend
 
@@ -68,3 +69,4 @@ services:
 
 volumes:
   redis-data:
+  frontend-node-modules:
