@@ -3,18 +3,18 @@
 ## Deployment Model
 
 - Each tenant represents an organization (school district, company, vendor) and receives a dedicated deployment of the mono-repo services.
-- Deployments are identical except for configuration (enabled portals, identity providers, feature toggles).
+- Deployments are identical except for configuration (enabled entry points, identity providers, feature toggles).
 - Each tenant has a dedicated remote Postgres database plus isolated secrets.
 
 ## Configuration Layers
 
 1. **Global Defaults**: stored in `configs/` templates (e.g., password policies, session lengths).
-2. **Tenant Overrides**: persisted in the backend (e.g., tenant profile) and loaded at runtime to tailor portals and auth flows.
-3. **Per-Portal Settings**: dictate landing page URLs, allowed auth methods, feature availability.
+2. **Tenant Overrides**: persisted in the backend (e.g., tenant profile) and loaded at runtime to tailor entry points and auth flows.
+3. **Per-Entry-Point Settings**: dictate landing page URLs, allowed auth methods, feature availability.
 
 ## User Types
 
-- Tenants define custom user types (e.g., parent, student, faculty, vendor). Each user type maps to RBAC roles and portal experiences.
+- Tenants define custom user types (e.g., parent, student, faculty, vendor). Each user type maps to RBAC roles and login portal experiences.
 - Default roles include `tenant-admin`, `support`, `standard-user`. Additional roles live in the RBAC matrix and will evolve as Milestone 2 lands.
 
 ## Lifecycle

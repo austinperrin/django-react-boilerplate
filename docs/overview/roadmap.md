@@ -7,16 +7,17 @@ updated as scope, decisions, and timelines evolve.
 
 ## Schedule
 
-| Milestone | Estimate |
-| --- | --- |
-| [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks |
-| [Milestone 2: Identity and Common Scaffolding](#milestone-2-identity-and-common-scaffolding) | 2-3 weeks |
-| [Milestone 3: Authentication and RBAC Core](#milestone-3-authentication-and-rbac-core) | 2-4 weeks |
-| [Milestone 4: Portal UX + RBAC Enforcement](#milestone-4-portal-ux--rbac-enforcement) | 2-4 weeks |
-| [Milestone 5: Shared Packages and Contracts](#milestone-5-shared-packages-and-contracts) | 2-3 weeks |
-| [Milestone 6: Automation and CI/CD](#milestone-6-automation-and-cicd) | 1-2 weeks |
-| [Milestone 7: Infrastructure and Deployment](#milestone-7-infrastructure-and-deployment) | 2-4 weeks |
-| [Milestone 8: Hardening and GA Readiness](#milestone-8-hardening-and-ga-readiness) | 2-3 weeks |
+| Milestone | Estimate | Status |
+| --- | --- | --- |
+| [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks | Completed |
+| [Milestone 2: Identity and Common Scaffolding](#milestone-2-identity-and-common-scaffolding) | 2-3 weeks | Planned |
+| [Milestone 3: Authentication and RBAC Core](#milestone-3-authentication-and-rbac-core) | 2-4 weeks | Planned |
+| [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 1-2 weeks | Planned |
+| [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 2-4 weeks | Planned |
+| [Milestone 6: Shared Packages and Contracts](#milestone-6-shared-packages-and-contracts) | 2-3 weeks | Planned |
+| [Milestone 7: Automation and CI/CD](#milestone-7-automation-and-cicd) | 1-2 weeks | Planned |
+| [Milestone 8: Infrastructure and Deployment](#milestone-8-infrastructure-and-deployment) | 2-4 weeks | Planned |
+| [Milestone 9: Hardening and GA Readiness](#milestone-9-hardening-and-ga-readiness) | 2-3 weeks | Planned |
 
 ## Milestone 1: Repository and Baseline Setup
 
@@ -31,20 +32,20 @@ Checklist:
   - [x] Establish testing policy and coverage targets.
   - [x] Establish infra standards (Docker, env files, .dockerignore).
   - [x] Establish git workflow and commit/documentation standards.
-  - [ ] Record initial ADRs (repo structure, auth strategy placeholder).
+  - [x] ADR: initial decisions (repo structure, auth strategy placeholder).
+  - [x] ADR: workspace/package manager strategy.
   - [x] Register repo automation agents, if any.
   - [x] Add CODEOWNERS and issue templates.
   - [x] Define contribution guide and repo overview (README structure).
-  - [ ] Decide workspace/package manager strategy and record via ADR.
 - Backend
   - [x] Define backend structure and settings layout.
   - [x] Add base requirements and tooling config references.
-  - [ ] Wire linting/formatting/type-checking config.
+  - [x] Wire linting/formatting/type-checking config.
   - [x] Add scripts/utilities guidance for local dev helpers.
 - Frontend
   - [x] Define frontend structure and tooling conventions.
-  - [ ] Wire ESLint/Prettier config and reference from frontend tooling.
-  - [ ] Scaffold frontend app shell (package.json, Vite project, base routing, lint/format scripts).
+  - [x] Wire ESLint/Prettier config and reference from frontend tooling.
+  - [x] Scaffold frontend app shell (package.json, Vite project, lint/format scripts).
 - Infra/DevOps
   - [x] Add initial Docker dev workflow and service Dockerfiles.
   - [x] Add per-service `.dockerignore` files.
@@ -57,11 +58,11 @@ Exit criteria:
 - Local dev workflow is documented and repeatable.
 
 Milestone review checklist:
-- [ ] Review docs for consistency and cross-links.
-- [ ] Update ADRs for new decisions.
-- [ ] Verify scripts/configs align with documented standards.
-- [ ] Confirm milestone goal and exit criteria are met.
-- [ ] Update roadmap items and mark completed tasks.
+- [x] Review docs for consistency and cross-links.
+- [x] Update ADRs for new decisions.
+- [x] Verify scripts/configs align with documented standards.
+- [x] Confirm milestone goal and exit criteria are met.
+- [x] Update roadmap items and mark completed tasks.
 
 ## Milestone 2: Identity and Common Scaffolding
 
@@ -69,9 +70,12 @@ Goal: Establish core backend domain scaffolding (common + identity) so migration
 and base models are ready before authentication flows are added.
 
 Checklist:
+- Docs/Standards
+  - [ ] ADR: custom user model strategy (AbstractUser vs AbstractBaseUser).
+  - [ ] ADR: tenant + entry point data model.
 - Backend
   - [ ] Implement `common` domain app (shared utilities, health checks).
-  - [ ] Implement `identity` domain app (custom user model, tenants, portals).
+  - [ ] Implement `identity` domain app (custom user model, tenants, entry points).
   - [ ] Define custom user model before initial migrations are created.
   - [ ] Create initial migrations for identity domain models.
 
@@ -88,26 +92,29 @@ Milestone review checklist:
 
 ## Milestone 3: Authentication and RBAC Core
 
-Goal: Deliver a working authentication system with tenant/portal context and a
+Goal: Deliver a working authentication system with tenant/entry-point context and a
 starter RBAC model to unlock secured API access.
 
 Checklist:
 - Security
   - [x] Document RBAC roles/permissions and auth policies.
   - [x] Document IAM strategy (MFA, SSO requirements).
+- Docs/Standards
+  - [ ] ADR: MFA enforcement model (tenant-required vs user opt-in).
+  - [ ] ADR: token storage/session strategy (BFF cookies, rotation, CSRF).
+  - [ ] ADR: auth provider integration approach (OIDC/SAML).
+  - [ ] ADR: JWT claim schema.
 - Backend
-  - [ ] Create portal metadata endpoint (`/api/v1/identity/portals/<slug>/`).
+  - [ ] Create entry point metadata endpoint (`/api/v1/identity/portals/<slug>/`).
   - [ ] Implement auth endpoints (`/api/v1/identity/auth/*`).
-  - [ ] Issue JWTs with tenant + portal context and claims.
+  - [ ] Issue JWTs with tenant + entry point context and claims.
   - [ ] Seed RBAC roles/permissions.
   - [ ] Add audit logging for auth events.
   - [ ] Disable Django admin and enforce secure defaults.
 - Frontend
   - [ ] Add basic auth client plumbing for login.
-  - [ ] Add placeholder login UI flow for a single portal.
 
 Exit criteria:
-- End-to-end login works for a single portal.
 - Authenticated API requests are enforced by default.
 
 Milestone review checklist:
@@ -117,31 +124,58 @@ Milestone review checklist:
 - [ ] Confirm milestone goal and exit criteria are met.
 - [ ] Update roadmap items and mark completed tasks.
 
-## Milestone 4: Portal UX + RBAC Enforcement
+## Milestone 4: Login Portal UX
 
-Goal: Enable portal-specific experiences with RBAC-aware routing and UI so user
+Goal: Deliver tenant-configurable login portals with entry point-specific auth
+options and a basic UX flow.
+
+Checklist:
+- Docs/Standards
+  - [ ] ADR: entry point domain allow/deny policy model.
+- Frontend
+  - [ ] Implement login portal routing (`/login/<portal_name>`).
+  - [ ] Build portal-specific login UI from entry point config.
+  - [ ] Add invalid portal handling and support messaging.
+- QA/Testing
+  - [ ] Add login portal flow smoke tests.
+
+Exit criteria:
+- End-to-end login works for a single login portal.
+- Portal UI reflects tenant-configured auth options.
+
+Milestone review checklist:
+- [ ] Review docs for consistency and cross-links.
+- [ ] Update ADRs for new decisions.
+- [ ] Verify scripts/configs align with documented standards.
+- [ ] Confirm milestone goal and exit criteria are met.
+- [ ] Update roadmap items and mark completed tasks.
+
+## Milestone 5: Post-Login UX + RBAC Enforcement
+
+Goal: Enable post-login experiences with RBAC-aware routing and UI so user
 roles map cleanly to visible features.
 
 Checklist:
 - Docs/Standards
-  - [x] Document portal UX expectations and routing conventions.
-  - [ ] Decide API contracts approach (OpenAPI vs shared types) and capture via ADR.
+  - [x] Document login portal UX expectations and routing conventions.
+  - [ ] ADR: post-login route strategy.
+  - [ ] ADR: API contracts approach (OpenAPI vs shared types).
 - Backend
   - [ ] Enforce RBAC permissions on protected endpoints.
 - Frontend
-  - [ ] Implement portal routing (`/portal/<slug>`).
+  - [ ] Implement post-login app routing.
   - [ ] Add auth/RBAC context provider.
   - [ ] Gate routes and UI based on RBAC claims.
-  - [ ] Provide two example portals to validate structure.
+  - [ ] Provide two example post-login app areas to validate structure.
 - QA/Testing
-  - [ ] Add basic portal routing tests and RBAC checks.
+  - [ ] Add basic post-login routing tests and RBAC checks.
 - Backend (Optional)
-  - [ ] Expose feature flag configuration per portal.
+  - [ ] Expose feature flag configuration per entry point or app area.
 - Frontend (Optional)
   - [ ] Wire feature flags from backend.
 
 Exit criteria:
-- Two portals render with distinct navigation and access rules.
+- Two post-login app areas render with distinct navigation and access rules.
 - Unauthorized API/UI actions are blocked consistently.
 
 Milestone review checklist:
@@ -151,10 +185,10 @@ Milestone review checklist:
 - [ ] Confirm milestone goal and exit criteria are met.
 - [ ] Update roadmap items and mark completed tasks.
 
-## Milestone 5: Shared Packages and Contracts
+## Milestone 6: Shared Packages and Contracts
 
 Goal: Centralize shared contracts and auth/RBAC definitions to reduce drift across
-services and portals.
+services and login portals.
 
 Checklist:
 - Docs/Standards
@@ -179,7 +213,7 @@ Milestone review checklist:
 - [ ] Confirm milestone goal and exit criteria are met.
 - [ ] Update roadmap items and mark completed tasks.
 
-## Milestone 6: Automation and CI/CD
+## Milestone 7: Automation and CI/CD
 
 Goal: Automate quality gates so builds, tests, and security checks run consistently
 before releases.
@@ -188,6 +222,7 @@ Checklist:
 - Docs/Standards
   - [ ] Document release and deployment flow.
   - [ ] Document CI expectations and required checks.
+  - [ ] ADR: CI pipeline standards (required checks, ordering, artifacts).
 - Backend
   - [x] Add backend test runner scripts.
   - [ ] Enforce lint/type checks in CI.
@@ -210,7 +245,7 @@ Milestone review checklist:
 - [ ] Confirm milestone goal and exit criteria are met.
 - [ ] Update roadmap items and mark completed tasks.
 
-## Milestone 7: Infrastructure and Deployment
+## Milestone 8: Infrastructure and Deployment
 
 Goal: Make tenant provisioning and deployment repeatable with clear runbooks and
 infrastructure automation.
@@ -241,7 +276,7 @@ Milestone review checklist:
 - [ ] Confirm milestone goal and exit criteria are met.
 - [ ] Update roadmap items and mark completed tasks.
 
-## Milestone 8: Hardening and GA Readiness
+## Milestone 9: Hardening and GA Readiness
 
 Goal: Validate reliability and security to reach GA-ready quality for a tenant
 deployment.
@@ -253,7 +288,7 @@ Checklist:
   - [ ] Performance testing for API flows.
   - [ ] Implement structured logging and audit events.
 - Frontend
-  - [ ] Performance testing for portal flows.
+  - [ ] Performance testing for login portals and post-login flows.
 - Infra/DevOps
   - [ ] Observability baseline (logs, metrics, alerts).
   - [ ] Define log retention and alerting thresholds.
@@ -273,7 +308,7 @@ Milestone review checklist:
 
 ## Extended Roadmap
 
-- Mobile clients and device-specific portals.
+- Mobile clients and device-specific frontends (e.g., dedicated Android/iOS apps).
 - Backend service decomposition (domain-specific services).
 - Advanced analytics, billing, and tenant dashboards.
 - Multi-region or disaster-recovery automation.

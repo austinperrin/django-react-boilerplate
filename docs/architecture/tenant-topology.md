@@ -6,7 +6,7 @@ receives its own isolated stack, data stores, and runtime configuration.
 ## Topology Summary
 
 Per tenant:
-- One or more frontend services (portal UI, static assets, CDN edge).
+- One or more frontend services (login portal UI, static assets, CDN edge).
 - One backend API service (Django/DRF) as the initial default.
 - One or more worker services (async jobs, scheduled tasks).
 - One tenant-isolated managed Postgres instance.
@@ -14,7 +14,7 @@ Per tenant:
 
 ## Service Responsibilities
 
-- Frontend: portal routing, RBAC-aware UI, calls backend APIs.
+- Frontend: login portal routing, RBAC-aware UI, calls backend APIs.
 - Backend: identity, auth, RBAC enforcement, domain logic.
 - Workers: long-running jobs (emails, reports, sync tasks).
 
@@ -32,7 +32,7 @@ Per tenant:
 
 ## Scaling Notes
 
-- Frontend can be horizontally scaled per portal traffic.
+- Frontend can be horizontally scaled per login portal traffic.
 - Backend scales per tenant workload; workers scale by queue depth.
 - Use per-tenant limits for CPU/memory to prevent noisy neighbors.
 
