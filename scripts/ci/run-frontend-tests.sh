@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd services/frontend
-npm run test
+npm --workspace frontend run test

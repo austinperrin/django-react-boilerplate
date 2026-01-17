@@ -9,7 +9,8 @@ Enterprise-oriented mono-repo boilerplate for single-tenant SaaS deployments bui
 - If you prefer manual setup, copy `configs/env/.env.backend.example` to `.env.backend` and `configs/env/.env.frontend.example` to `.env.frontend`.
 - Run `docker compose -f infra/docker/docker-compose.dev.yml up --build` for local development.
 - Include the frontend profile when needed: `docker compose -f infra/docker/docker-compose.dev.yml --profile frontend up --build`.
-- Run `npm install` in `services/frontend/` when using the frontend bind mount.
+- Run `npm install` at repo root when using the frontend workspace tooling.
+- Use `scripts/ci/run-backend-checks.sh` and `scripts/ci/run-frontend-checks.sh` for local checks.
 - Use `scripts/` for repeatable automation hooks as they are added.
 
 ## Status

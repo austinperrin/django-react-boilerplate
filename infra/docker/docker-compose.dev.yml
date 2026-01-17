@@ -28,6 +28,7 @@ services:
       - "8000:8000"
     volumes:
       - ../../services/backend:/app
+      - ../../:/repo
     depends_on:
       - redis
 
@@ -44,14 +45,15 @@ services:
     build:
       context: ../../services/frontend
       dockerfile: Dockerfile
-    command: ["/bin/sh", "-c", "npm run dev -- --host 0.0.0.0 --port 5173"]
+    working_dir: /repo
+    command: ["/bin/sh", "-c", "npm --workspace frontend run dev -- --host 0.0.0.0 --port 5173"]
     env_file:
       - ../../.env.frontend
     ports:
       - "5173:5173"
     volumes:
-      - ../../services/frontend:/app
-      - frontend-node-modules:/app/node_modules
+      - ../../:/repo
+      - repo-node-modules:/repo/node_modules
     depends_on:
       - backend
 
@@ -70,3 +72,4 @@ services:
 volumes:
   redis-data:
   frontend-node-modules:
+  repo-node-modules:

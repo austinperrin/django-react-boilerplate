@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ruff check services/backend
-black --check services/backend
+docker compose -f infra/docker/docker-compose.dev.yml up -d backend
+docker compose -f infra/docker/docker-compose.dev.yml exec backend ruff check /app
+docker compose -f infra/docker/docker-compose.dev.yml exec backend black --check /app

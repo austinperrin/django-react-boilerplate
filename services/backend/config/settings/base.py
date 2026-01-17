@@ -5,6 +5,7 @@
 # ======================================================================
 
 from pathlib import Path
+from typing import Any
 
 import environ
 
@@ -52,7 +53,6 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[])
 # ----------------------------------------------------------------------
 INSTALLED_APPS = [
     # Apps that must run before Django's core apps
-
     # Django core apps
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,13 +60,11 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
     # Third-party apps
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
-
     # Project apps
     # "apps.identity",
 ]
@@ -80,7 +78,6 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     # Middleware that must run before standard Django middleware
     "corsheaders.middleware.CorsMiddleware",
-
     # Standard Django middleware
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -89,9 +86,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-
     # Third-party middleware
-
     # Project middleware
 ]
 
@@ -165,23 +160,19 @@ USE_TZ = True
 # ----------------------------------------------------------------------
 # Base API behavior for all environments. Defaults keep the API
 # stateless, predictable, and secure for multi-service communication.
-REST_FRAMEWORK = {
+REST_FRAMEWORK: dict[str, Any] = {
     # Renderers: JSON-only by default
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
     ],
-
     # Parsers: JSON-only by default
     "DEFAULT_PARSER_CLASSES": [
         "rest_framework.parsers.JSONParser",
     ],
-
     # Authentication: leave undefined in base so environments can decide.
     # "DEFAULT_AUTHENTICATION_CLASSES": [],
-
     # Permissions: require explicit configuration in each environment.
     # "DEFAULT_PERMISSION_CLASSES": [],
-
     # Versioning: included early for multi-service integration.
     "DEFAULT_VERSIONING_CLASS": "rest_framework.versioning.NamespaceVersioning",
 }

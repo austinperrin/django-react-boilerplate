@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-cd services/frontend
-npm run lint
-npm run format:check
+npm --workspace frontend run lint
+npm --workspace frontend run format:check

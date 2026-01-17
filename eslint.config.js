@@ -1,4 +1,4 @@
-import js from 'eslint/js'
+import js from '@eslint/js'
 import globals from 'globals'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
@@ -6,6 +6,12 @@ import reactRefresh from 'eslint-plugin-react-refresh'
 export default [
   {
     ignores: ['**/dist/**', '**/node_modules/**'],
+  },
+  {
+    files: ['services/frontend/vite.config.js'],
+    languageOptions: {
+      globals: globals.node,
+    },
   },
   {
     files: ['services/frontend/**/*.{js,jsx}'],
