@@ -225,6 +225,7 @@ Checklist:
   - [ ] ADR: CI pipeline standards (required checks, ordering, artifacts).
 - Backend
   - [x] Add backend test runner scripts.
+  - [x] Add backend smoke test to keep CI green while scaffolding.
   - [ ] Enforce lint/type checks in CI.
 - Frontend
   - [ ] Add frontend test runner scripts.

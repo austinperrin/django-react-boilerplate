@@ -11,7 +11,8 @@ Scripts invoked by GitHub Actions (or other CI) to run linting, tests, and packa
 Scripts:
 
 - `backend-lint.sh`: run Ruff + Black checks for the backend (host-based).
-- `backend-tests.sh`: run pytest for the backend (host-based).
+- `backend-tests.sh`: run pytest for the backend (host-based). A smoke test
+  exists to keep CI green while scaffolding.
 - `backend-typecheck.sh`: run mypy checks for the backend (host-based).
 - `frontend-lint.sh`: run ESLint + Prettier checks for the frontend workspace (host-based).
 - `frontend-tests.sh`: run frontend unit tests for the workspace (host-based).
