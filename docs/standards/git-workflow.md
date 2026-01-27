@@ -20,7 +20,7 @@
 
 - Tag releases as `vMAJOR.MINOR.PATCH` following semantic versioning.
 - Create `release/vX.Y` branches only when a patch needs backporting; otherwise tag `main` directly.
-- Maintain a `CHANGELOG.md` (to be added) summarizing noteworthy changes per release.
+- Maintain `CHANGELOG.md` summarizing noteworthy changes per release.
 
 ## Hotfixes
 

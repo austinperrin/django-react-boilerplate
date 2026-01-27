@@ -9,7 +9,7 @@
    - Backend: pytest-django tests hitting DRF endpoints with tenant-aware fixtures.
    - Frontend: component tests combining router + context.
 3. **End-to-End (E2E)**
-   - Cypress/Playwright flows per portal (login, dashboard, admin actions) once UI stabilizes.
+   - Cypress/Playwright flows per login portal and post-login area (login, dashboard, admin actions) once UI stabilizes.
 4. **Security/Compliance Checks**
    - Bandit, pip-audit for Python; npm audit, retire.js for frontend.
 

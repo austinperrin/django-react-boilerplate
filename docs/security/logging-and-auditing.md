@@ -2,7 +2,7 @@
 
 ## Logging Standards
 
-- Use structured logging (JSON) with fields: timestamp, service, tenant_id, user_id, portal_slug, request_id.
+- Use structured logging (JSON) with fields: timestamp, service, tenant_id, user_id, entry_point_slug, request_id.
 - Log levels:
   - `INFO` for normal operations.
   - `WARNING` for recoverable issues.
@@ -16,7 +16,7 @@ Log the following at minimum:
 
 - Authentication attempts (success/failure, MFA challenges).
 - Role/permission changes.
-- Tenant configuration edits (portals, IAM settings, feature flags).
+- Tenant configuration edits (entry points, IAM settings, feature flags).
 - Data exports/imports.
 - Administrative actions (user suspension, data deletion).
 

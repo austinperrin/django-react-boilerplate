@@ -6,7 +6,7 @@
 
 ## Context
 
-We are building a security-first, single-tenant SaaS boilerplate combining Django/DRF and React/Vite. The codebase must support multiple deployable services (backend, frontend, future portals/services), shared libraries, and robust infrastructure artifacts. Documentation should live alongside code with clear discoverability.
+We are building a security-first, single-tenant SaaS boilerplate combining Django/DRF and React/Vite. The codebase must support multiple deployable services (backend, frontend, future login portals or additional services), shared libraries, and robust infrastructure artifacts. Documentation should live alongside code with clear discoverability.
 
 ## Decision
 
@@ -15,7 +15,7 @@ Adopt the following top-level mono-repo layout:
 ```
 ├── services/
 │   ├── backend/      # Django/DRF API with domain apps
-│   └── frontend/     # React/Vite client with tenant-defined portals
+│   └── frontend/     # React/Vite client with tenant-defined login portals
 ├── packages/         # shared libraries (auth, RBAC, config, UI)
 ├── infra/            # Docker, compose files, IaC scaffolding
 ├── configs/          # environment templates, lint configs, policies
@@ -44,7 +44,7 @@ Backend conventions:
 
 Frontend conventions:
 
-- Source under `services/frontend/src/` with `apps/<portal>` representing tenant-defined portal entry points.
+- Source under `services/frontend/src/` with `apps/<area>` representing post-login app areas.
 - RBAC-aware routing and shared UI kits originate from `packages/`.
 
 Shared tooling:
@@ -63,5 +63,5 @@ Shared tooling:
 ## Follow-Up
 
 1. Reference this ADR when adding new folders or documentation sections to keep structure consistent.
-2. Scaffold additional ADRs for authentication strategy, CI/CD tooling, and portal architecture.
+2. Scaffold additional ADRs for authentication strategy, CI/CD tooling, and entry point architecture.
 3. Populate docs subfolders (overview, standards, security, runbooks) as decisions solidify.

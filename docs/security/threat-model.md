@@ -18,7 +18,7 @@
 - **Tampering**: injection attacks against APIs, unauthorized modification of tenant settings.
 - **Repudiation**: lack of audit trails for admin actions.
 - **Information Disclosure**: data leaks through misconfigured RBAC or insecure storage.
-- **Denial of Service**: resource exhaustion against portals or APIs.
+- **Denial of Service**: resource exhaustion against entry points or APIs.
 - **Elevation of Privilege**: exploiting backend bugs to gain admin access.
 
 ## Mitigations

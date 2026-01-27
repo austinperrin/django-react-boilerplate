@@ -5,7 +5,12 @@ Enterprise-oriented mono-repo boilerplate for single-tenant SaaS deployments bui
 ## Getting Started
 
 - Review `docs/index.md` for structure, conventions, and ADRs.
-- Follow instructions in `infra/` (once populated) for local and production environments.
+- Run `scripts/bootstrap/dev.sh` to create `.env` files, then update values.
+- If you prefer manual setup, copy `configs/env/.env.backend.example` to `.env.backend` and `configs/env/.env.frontend.example` to `.env.frontend`.
+- Run `docker compose -f infra/docker/docker-compose.dev.yml up --build` for local development.
+- Include the frontend profile when needed: `docker compose -f infra/docker/docker-compose.dev.yml --profile frontend up --build`.
+- Run `npm install` at repo root when using the frontend workspace tooling.
+- Use `scripts/dev/backend-checks.sh` and `scripts/dev/frontend-checks.sh` for local checks.
 - Use `scripts/` for repeatable automation hooks as they are added.
 
 ## Status

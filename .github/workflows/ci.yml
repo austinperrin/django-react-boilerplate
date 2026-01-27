@@ -7,8 +7,69 @@ on:
     branches: [ main ]
 
 jobs:
-  todo:
+  backend-lint:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install backend dependencies
+        run: pip install -r requirements/dev.txt
+      - name: Lint backend
+        run: bash ../../scripts/ci/backend-lint.sh
+  backend-tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/backend
+    env:
+      DJANGO_SETTINGS_MODULE: config.settings.dev
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install backend dependencies
+        run: pip install -r requirements/dev.txt
+      - name: Test backend
+        run: bash ../../scripts/ci/backend-tests.sh
+  backend-typecheck:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: services/backend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install backend dependencies
+        run: pip install -r requirements/dev.txt
+      - name: Type-check backend
+        run: bash ../../scripts/ci/backend-typecheck.sh
+  frontend-lint:
     runs-on: ubuntu-latest
     steps:
-      - name: Placeholder
-        run: echo "CI workflow to be defined (tests, lint, builds)."
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install frontend dependencies
+        run: npm install
+      - name: Lint frontend
+        run: bash scripts/ci/frontend-lint.sh
+  frontend-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install frontend dependencies
+        run: npm install
+      - name: Test frontend
+        run: bash scripts/ci/frontend-tests.sh

@@ -9,6 +9,7 @@ Entry point for all standards documentation. Use the files listed below for deta
 - `frontend-style.md` – React/Vite standards, component patterns, security.
 - `testing-policy.md` – unit/integration/e2e expectations and coverage targets.
 - `commit-and-docs.md` – commit hygiene, documentation updates, ADR process.
+- `infra.md` – Docker/Compose conventions and environment file standards.
 
 ## How to Contribute
 

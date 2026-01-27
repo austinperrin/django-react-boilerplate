@@ -11,6 +11,9 @@ Django + Django REST Framework API that powers the mono-repo. This document capt
 
 ## Layout
 
+The domain app structure below is planned for Milestone 2 and is not
+scaffolded yet in the repo.
+
 ```
 services/backend/
 ├── apps/
@@ -44,3 +47,7 @@ services/backend/
 - Draft ADR for authentication/identity strategy.
 - Scaffold initial domain apps (`common`, `identity`) focusing on tenant-aware models.
 - Integrate testing/linting workflow (pytest, mypy, bandit) aligned with CI/CD.
+
+## Local Tooling
+
+- Run type checks with `mypy services/backend`.

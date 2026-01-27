@@ -11,6 +11,9 @@ React (JavaScript) app powered by Vite. Serves as the primary user interface lay
 
 ## Layout
 
+The Vite app shell is scaffolded. The structure below describes the target
+layout as portal/login flows and shared modules are introduced.
+
 ```
 services/frontend/
 ├── src/
@@ -37,6 +40,7 @@ services/frontend/
 ## Security & Quality
 
 - Enforce ESLint + Prettier + unit tests (Vitest/Testing Library) via CI.
+- Run `npm run lint` and `npm run format:check`; configs live at repo root.
 - Leverage Content Security Policy and other headers via reverse proxy or Vite middleware.
 - Run dependency scanning (e.g., `npm audit`) as part of pipelines.
 - Document tenant-defined portal UX and flows under `docs/overview/` once defined.
@@ -46,3 +50,4 @@ services/frontend/
 - Decide on routing/portal strategy (single router vs multi-root apps) via ADR.
 - Scaffold shared auth/RBAC context that aligns with backend JWT payloads.
 - Integrate storybook or equivalent once a design system is in `packages/`.
+- Add login portal UI flows (`/login/<portal_name>`) in the auth milestone.

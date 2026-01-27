@@ -5,7 +5,7 @@ Guidance for authentication, authorization, data protection, and compliance cont
 ## Available Documents
 
 - `security-baseline.md` – overarching controls and compliance posture.
-- `iam-strategy.md` – identity providers, MFA, portal policies.
+- `iam-strategy.md` – identity providers, MFA, entry point policies.
 - `rbac-matrix.md` – default roles/permissions structure.
 - `threat-model.md` – STRIDE assessment and mitigations.
 - `secrets-management.md` – storage, distribution, rotation guidance.

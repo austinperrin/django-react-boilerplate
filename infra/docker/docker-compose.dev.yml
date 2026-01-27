@@ -1,6 +1,19 @@
-version: "3.9"
-
+# ======================================================================
+# DEVELOPMENT COMPOSE CONFIGURATION
+# Provides services required for local development. All configuration
+# values are loaded from the project-level .env files. This file should
+# not be used for production deployments.
+# ======================================================================
 services:
+
+  # --------------------------------------------------------------------
+  # Backend Application Service
+  #
+  # Builds the Django development image and runs the server with hot
+  # reload enabled. The local project directory is bind-mounted to allow
+  # code changes without rebuilding the container. Environment variables
+  # such as DATABASE_URL are expected to be defined in .env.backend.
+  # --------------------------------------------------------------------
   backend:
     build:
       context: ../../services/backend
@@ -10,29 +23,45 @@ services:
     command: ["/bin/sh", "-c", "python manage.py runserver 0.0.0.0:8000"]
     env_file:
       - ../../.env.backend
+    restart: unless-stopped
     ports:
       - "8000:8000"
     volumes:
       - ../../services/backend:/app
+      - ../../:/repo
     depends_on:
       - redis
-    environment:
-      - DATABASE_URL=${DATABASE_URL:-postgres://user:password@localhost:5432/dbname}
 
+  # --------------------------------------------------------------------
+  # Frontend Application Service
+  #
+  # Runs the Vite dev server with host binding enabled. The local project
+  # directory is bind-mounted to allow hot module reload during local
+  # development. Environment variables are loaded from .env.frontend.
+  # --------------------------------------------------------------------
   frontend:
+    profiles:
+      - frontend
     build:
       context: ../../services/frontend
       dockerfile: Dockerfile
-    command: ["/bin/sh", "-c", "npm run dev -- --host 0.0.0.0 --port 5173"]
+    working_dir: /repo
+    command: ["/bin/sh", "-c", "npm --workspace frontend run dev -- --host 0.0.0.0 --port 5173"]
     env_file:
       - ../../.env.frontend
     ports:
       - "5173:5173"
     volumes:
-      - ../../services/frontend:/app
+      - ../../:/repo
+      - repo-node-modules:/repo/node_modules
     depends_on:
       - backend
 
+  # --------------------------------------------------------------------
+  # Redis Service
+  #
+  # Used for caching and background tasks during development.
+  # --------------------------------------------------------------------
   redis:
     image: redis:7
     ports:
@@ -42,3 +71,5 @@ services:
 
 volumes:
   redis-data:
+  frontend-node-modules:
+  repo-node-modules:
