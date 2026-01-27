@@ -231,7 +231,7 @@ Checklist:
   - [ ] Enforce lint checks in CI.
 - Infra/DevOps
   - [ ] Define CI workflows (lint, test, build) and replace placeholder jobs.
-  - [ ] Route CI tasks through `scripts/ci/` wrappers.
+  - [ ] Route CI tasks through `scripts/ci/` wrappers and local checks through `scripts/dev/`.
   - [ ] Add security scans (pip-audit, npm audit).
 
 Exit criteria:

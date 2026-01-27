@@ -8,15 +8,14 @@ Scripts invoked by GitHub Actions (or other CI) to run linting, tests, and packa
 - Accept configuration via env vars (e.g., `SERVICE=backend`, `NODE_ENV=test`).
 - Exit non-zero on failure so workflows fail fast.
 
-Potential scripts:
+Scripts:
 
-- `run-backend-lint.sh`: run Ruff + Black checks for the backend.
-- `run-backend-checks.sh`: run backend checks (Django check/test + mypy).
-- `run-backend-typecheck.sh`: run mypy checks for the backend.
-- `run-backend-tests.sh`: install deps, run pytest + coverage.
-- `run-frontend-lint.sh`: run ESLint + Prettier checks for the frontend workspace.
-- `run-frontend-checks.sh`: run frontend lint/format/test via Docker Compose.
-- `run-frontend-tests.sh`: run frontend unit tests for the workspace.
+- `backend-lint.sh`: run Ruff + Black checks for the backend (host-based).
+- `backend-tests.sh`: run pytest for the backend (host-based).
+- `backend-typecheck.sh`: run mypy checks for the backend (host-based).
+- `frontend-lint.sh`: run ESLint + Prettier checks for the frontend workspace (host-based).
+- `frontend-tests.sh`: run frontend unit tests for the workspace (host-based).
 - `scan-security.sh`: aggregate Bandit/pip-audit/npm audit results.
 
-Update this directory as pipelines mature.
+Backend scripts are expected to run with `services/backend` as the working
+directory (set by CI). Local Docker-first checks live under `scripts/dev/`.

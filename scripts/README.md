@@ -16,6 +16,7 @@ Central location for developer tooling and CI helpers (bootstrap commands, lint/
 scripts/
 ├── README.md
 ├── bootstrap/         # environment setup helpers
+├── dev/               # local, Docker-first workflows
 ├── ci/                # wrappers invoked by CI/CD pipelines
 └── utilities/         # ad-hoc tooling (e.g., scaffolding commands)
 ```
@@ -24,6 +25,6 @@ Add subdirectories as tooling grows; each should have its own README if non-triv
 
 ## Next Steps
 
-- Identify common workflows (e.g., `scripts/bootstrap/dev.sh`, `scripts/ci/run-tests.sh`).
+- Identify common workflows (e.g., `scripts/bootstrap/dev.sh`, `scripts/dev/backend-checks.sh`).
 - Align with CI provider (GitHub Actions) by referencing these scripts in workflow files.
 - Ensure scripts are executable (`chmod +x`) and linted (shellcheck, etc.).
