@@ -2,7 +2,7 @@
 
 ## Project Structure
 
-- Django project config lives under `services/backend/config/` with environment-specific settings modules (`base`, `dev`, `prod`).
+- Django project config lives under `services/backend/config/` with environment-specific settings modules in `services/backend/config/settings/` (`base`, `dev`, `prod`).
 - Domain logic resides in `services/backend/apps/<domain>/` with clear boundaries; share code via `apps/common` or `packages/`.
 - Each domain exposes REST endpoints under `apps/<domain>/api/v1/`; routers are registered in `config/urls.py` using versioned prefixes.
 

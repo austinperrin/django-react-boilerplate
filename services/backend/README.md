@@ -26,7 +26,7 @@ services/backend/
 ```
 
 - `apps/<domain>`: each domain is a Django app with its own `api/v1/<domain>/` namespace (routers, serializers, views).
-- `config/`: split settings for `base.py`, `dev.py`, `test.py`, `prod.py`, referencing shared env vars loaded via `configs/`.
+- `config/settings/`: split settings for `base.py`, `dev.py`, `test.py`, `prod.py`, referencing shared env vars loaded via `configs/`.
 - `docker/`: overrides or extra compose snippets specific to the backend service.
 
 ## API Conventions
