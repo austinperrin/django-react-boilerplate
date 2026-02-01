@@ -10,7 +10,7 @@ updated as scope, decisions, and timelines evolve.
 | Milestone | Estimate | Status |
 | --- | --- | --- |
 | [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks | Completed |
-| [Milestone 2: Identity and Common Scaffolding](#milestone-2-identity-and-common-scaffolding) | 2-3 weeks | Planned |
+| [Milestone 2: Identity and Common Scaffolding](#milestone-2-identity-and-common-scaffolding) | 2-3 weeks | In Progress |
 | [Milestone 3: Authentication and RBAC Core](#milestone-3-authentication-and-rbac-core) | 2-4 weeks | Planned |
 | [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 1-2 weeks | Planned |
 | [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 2-4 weeks | Planned |
