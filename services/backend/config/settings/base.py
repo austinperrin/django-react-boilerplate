@@ -54,7 +54,7 @@ ALLOWED_HOSTS = env.list("DJANGO_ALLOWED_HOSTS", default=[])
 INSTALLED_APPS = [
     # Apps that must run before Django's core apps
     # Django core apps
-    "django.contrib.admin",
+    # "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework_simplejwt.token_blacklist",
     # Project apps
+    "apps.common",
     # "apps.identity",
 ]
 
