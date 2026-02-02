@@ -74,9 +74,9 @@ Checklist:
 - Docs/Standards
   - [x] ADR: custom user model + base model strategy.
 - Backend
-  - [ ] Implement `common` domain app (base models, shared utilities, health checks).
-  - [ ] Implement `identity` domain app (custom user model + minimal profile placeholder).
-  - [ ] Configure `AUTH_USER_MODEL` and register `identity` app in settings.
+  - [x] Implement `common` domain app (base models, shared utilities, health checks).
+  - [x] Implement `identity` domain app (custom user model + minimal profile placeholder).
+  - [x] Configure `AUTH_USER_MODEL` and register `identity` app in settings.
 
 Exit criteria:
 - Common and identity apps are scaffolded with base models and custom user model.
@@ -106,6 +106,7 @@ Checklist:
 - Backend
   - [ ] Implement IAM provider models (provider + external identities).
   - [ ] Create initial migrations for identity/common domain models.
+  - [ ] Add identity readiness/health endpoint for auth dependencies.
   - [ ] Create entry point metadata endpoint (`/api/v1/identity/portals/<slug>/`).
   - [ ] Implement auth endpoints (`/api/v1/identity/auth/*`).
   - [ ] Issue JWTs with entry point context and claims.

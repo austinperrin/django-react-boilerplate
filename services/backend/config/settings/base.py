@@ -67,11 +67,11 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt.token_blacklist",
     # Project apps
     "apps.common",
-    # "apps.identity",
+    "apps.identity",
 ]
 
 # Custom user model
-# AUTH_USER_MODEL = "identity.User"
+AUTH_USER_MODEL = "identity.User"
 
 # ----------------------------------------------------------------------
 # MIDDLEWARE
