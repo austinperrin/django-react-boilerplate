@@ -8,13 +8,13 @@
 
 ## Scope
 
-This document covers product intent and tenant configuration for dynamic login
-portals. Post-login app areas are described in architecture docs.
+This document covers product intent and planned tenant configuration for
+dynamic login portals. Post-login app areas are described in architecture docs.
 
 ## Portal Definition
 
 - Portals are identified by a slug (e.g., `parent`, `student`, `vendor`) and map to login routes such as `/login/<portal_name>`.
-- Entry point metadata (configured per login portal):
+- Entry point metadata (planned, configured per login portal):
   - Display name & branding overrides.
   - Allowed authentication providers (username/password, social, SAML, etc.).
   - Default RBAC role assigned on self-registration (if allowed).
@@ -22,14 +22,14 @@ portals. Post-login app areas are described in architecture docs.
 
 ## Backend Responsibilities
 
-- Serve entry point configuration via a read-only API consumed by the frontend at runtime.
-- Enforce entry point auth policies (e.g., admins must use SAML, vendors may use magic links) before issuing JWTs.
-- Tag JWTs with entry point context so frontend can enforce correct UI states.
+- Serve entry point configuration via a read-only API consumed by the frontend at runtime (planned).
+- Enforce entry point auth policies (e.g., admins must use SAML, vendors may use magic links) before issuing JWTs (planned).
+- Tag JWTs with entry point context so frontend can enforce correct UI states (planned).
 
 ## Frontend Responsibilities
 
-- Client bootstraps by fetching entry point metadata, then renders the matching login portal UI.
-- After authentication, route into post-login app areas using roles + entry point context.
+- Client bootstraps by fetching entry point metadata, then renders the matching login portal UI (planned).
+- After authentication, route into post-login app areas using roles + entry point context (planned).
 - Shared components live under `src/apps/shared` to avoid duplication.
 
 See `docs/architecture/login-portal-routing.md` for implementation details.
