@@ -1,6 +1,6 @@
 # Backend Service
 
-Django + Django REST Framework API that powers the mono-repo. This document captures structural conventions before code is added.
+Django + Django REST Framework API that powers the mono-repo. This document captures structural conventions and early scaffolding as the backend evolves.
 
 ## Goals
 
@@ -11,8 +11,8 @@ Django + Django REST Framework API that powers the mono-repo. This document capt
 
 ## Layout
 
-The domain app structure below is planned for Milestone 2 and is not
-scaffolded yet in the repo.
+The domain app structure below reflects current scaffolding and planned
+domain growth.
 
 ```
 services/backend/
@@ -32,7 +32,7 @@ services/backend/
 ## API Conventions
 
 - REST endpoints under `/api/v1/<domain>/` by default; bump versions via ADR when breaking changes occur.
-- JWT-based auth with pluggable identity providers per tenant (default Django auth + optional SSO integrations).
+- JWT-based auth with pluggable identity providers per tenant (default Django auth + optional SSO integrations) (planned).
 - RBAC enforced in DRF permissions; admin-only features exposed via same endpoints but gated by permissions.
 
 ## Security Expectations
@@ -44,8 +44,8 @@ services/backend/
 
 ## Next Steps
 
-- Draft ADR for authentication/identity strategy.
-- Scaffold initial domain apps (`common`, `identity`) focusing on tenant-aware models.
+- Expand identity models as IAM scope grows (providers, external identities).
+- Add auth endpoints and RBAC enforcement as the roadmap advances.
 - Integrate testing/linting workflow (pytest, mypy, bandit) aligned with CI/CD.
 
 ## Local Tooling

@@ -20,7 +20,7 @@ Authoritative starting point for all project documentation. Each section below l
 
 ## Next Steps
 
-- Reference ADR-0001 for repo/documentation layout; draft follow-up ADRs (auth strategy, CI/CD, entry point architecture) as the roadmap advances.
+- Reference ADR-0001 for repo/documentation layout; draft follow-up ADRs (CI/CD, entry point architecture) as the roadmap advances.
 - Review the internal roadmap and tenant topology docs as decisions evolve.
 - Keep standards documents aligned as tooling and implementation land.
 - Expand runbooks once CI/CD and operational flows are implemented.

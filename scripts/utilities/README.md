@@ -6,7 +6,7 @@ Examples:
 
 - `create-portal.py`: scaffold frontend/backend artifacts for a new portal slug.
 - `cleanup-docker.sh`: remove stale containers/images during development.
-- `health-check.py`: hit service health endpoints for smoke testing.
+- `health-check.sh`: hit service health endpoints for smoke testing.
 - `generate-django-secret.py`: print a random Django `SECRET_KEY` value.
 
 Document usage and dependencies inside each script. Consider promoting frequently used utilities to `packages/` if they become shared libraries.

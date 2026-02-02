@@ -10,7 +10,7 @@ updated as scope, decisions, and timelines evolve.
 | Milestone | Estimate | Status |
 | --- | --- | --- |
 | [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks | Completed |
-| [Milestone 2: Common + Identity Foundations](#milestone-2-common--identity-foundations) | 2-3 weeks | In Progress |
+| [Milestone 2: Common + Identity Foundations](#milestone-2-common--identity-foundations) | 2-3 weeks | Completed |
 | [Milestone 3: Identity Expansion + Authentication Core](#milestone-3-identity-expansion--authentication-core) | 2-4 weeks | Planned |
 | [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 1-2 weeks | Planned |
 | [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 2-4 weeks | Planned |
@@ -83,11 +83,11 @@ Exit criteria:
 - Health checks and base utilities are available for future endpoints.
 
 Milestone review checklist:
-- [ ] Review docs for consistency and cross-links.
-- [ ] Update ADRs for new decisions.
-- [ ] Verify scripts/configs align with documented standards.
-- [ ] Confirm milestone goal and exit criteria are met.
-- [ ] Update roadmap items and mark completed tasks.
+- [x] Review docs for consistency and cross-links.
+- [x] Update ADRs for new decisions.
+- [x] Verify scripts/configs align with documented standards.
+- [x] Confirm milestone goal and exit criteria are met.
+- [x] Update roadmap items and mark completed tasks.
 
 ## Milestone 3: Identity Expansion + Authentication Core
 
@@ -103,6 +103,8 @@ Checklist:
   - [ ] ADR: token storage/session strategy (BFF cookies, rotation, CSRF).
   - [ ] ADR: auth provider integration approach (OIDC/SAML).
   - [ ] ADR: JWT claim schema.
+  - [ ] ADR: entry point data model (config + metadata shape).
+  - [ ] ADR: identity readiness/health semantics.
 - Backend
   - [ ] Implement IAM provider models (provider + external identities).
   - [ ] Create initial migrations for identity/common domain models.
@@ -111,7 +113,7 @@ Checklist:
   - [ ] Implement auth endpoints (`/api/v1/identity/auth/*`).
   - [ ] Issue JWTs with entry point context and claims.
   - [ ] Add audit logging for auth events.
-  - [ ] Disable Django admin and enforce secure defaults.
+  - [x] Disable Django admin and enforce secure defaults.
 - Frontend
   - [ ] Add basic auth client plumbing for login.
 

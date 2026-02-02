@@ -2,9 +2,9 @@
 
 ## Goals
 
-- Provide distinct login experiences per user type while sharing the same backend/APIs.
-- Allow tenants to configure which login portals are available and which auth methods each entry point accepts.
-- Ensure admin functions blend into regular UI but are only visible when roles permit.
+- Provide distinct login experiences per user type while sharing the same backend/APIs (target state).
+- Allow tenants to configure which login portals are available and which auth methods each entry point accepts (target state).
+- Ensure admin functions blend into regular UI but are only visible when roles permit (target state).
 
 ## Scope
 

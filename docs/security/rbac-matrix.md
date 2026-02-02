@@ -1,5 +1,7 @@
 # RBAC Matrix
 
+This matrix captures target roles and permission concepts planned for the system.
+
 | Role            | Description                               | Example Permissions                                      |
 |-----------------|-------------------------------------------|----------------------------------------------------------|
 | tenant-admin    | Full control over tenant configuration    | Manage entry points, configure IAM, view audit logs      |
