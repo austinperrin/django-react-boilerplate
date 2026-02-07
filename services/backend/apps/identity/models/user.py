@@ -1,3 +1,5 @@
+from typing import Any, ClassVar
+
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -9,13 +11,15 @@ from django.utils import timezone
 from apps.common.models import BaseModel
 
 
-class UserManager(BaseUserManager):
+class UserManager(BaseUserManager["User"]):
     """
     Custom manager for email-based user accounts.
     Provides helpers for standard users and superusers.
     """
 
-    def create_user(self, email: str, password: str | None = None, **extra_fields):
+    def create_user(
+        self, email: str, password: str | None = None, **extra_fields: Any
+    ) -> "User":
         if not email:
             raise ValueError("Email is required for user accounts.")
 
@@ -30,7 +34,9 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email: str, password: str, **extra_fields):
+    def create_superuser(
+        self, email: str, password: str, **extra_fields: Any
+    ) -> "User":
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
         extra_fields.setdefault("is_active", True)
@@ -70,11 +76,11 @@ class User(BaseModel, AbstractBaseUser, PermissionsMixin):
     )
 
     # Manager
-    objects = UserManager()
+    objects: ClassVar[UserManager] = UserManager()
 
     # Authentication configuration
-    USERNAME_FIELD = "email"
-    REQUIRED_FIELDS: list[str] = []  # no secondary login fields
+    USERNAME_FIELD: ClassVar[str] = "email"
+    REQUIRED_FIELDS: ClassVar[list[str]] = []  # no secondary login fields
 
     class Meta:
         db_table = "identity_user"
