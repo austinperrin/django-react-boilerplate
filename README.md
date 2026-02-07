@@ -5,7 +5,7 @@ Enterprise-oriented mono-repo boilerplate for single-tenant SaaS deployments bui
 ## Getting Started
 
 - Review `docs/index.md` for structure, conventions, and ADRs.
-- Run `scripts/bootstrap/dev.sh` to create `.env` files, then update values.
+- Run `scripts/bootstrap/dev.sh` to create `.env` files and generate `DJANGO_SECRET_KEY` when it is missing or still the placeholder (use `--rotate-secret` to force rotation).
 - If you prefer manual setup, copy `configs/env/.env.backend.example` to `.env.backend` and `configs/env/.env.frontend.example` to `.env.frontend`.
 - Run `docker compose -f infra/docker/docker-compose.dev.yml up --build` for local development.
 - Include the frontend profile when needed: `docker compose -f infra/docker/docker-compose.dev.yml --profile frontend up --build`.

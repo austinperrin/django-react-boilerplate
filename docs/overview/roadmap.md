@@ -10,8 +10,8 @@ updated as scope, decisions, and timelines evolve.
 | Milestone | Estimate | Status |
 | --- | --- | --- |
 | [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks | Completed |
-| [Milestone 2: Identity and Common Scaffolding](#milestone-2-identity-and-common-scaffolding) | 2-3 weeks | Planned |
-| [Milestone 3: Authentication and RBAC Core](#milestone-3-authentication-and-rbac-core) | 2-4 weeks | Planned |
+| [Milestone 2: Common + Identity Foundations](#milestone-2-common--identity-foundations) | 2-3 weeks | Completed |
+| [Milestone 3: Identity Expansion + Authentication Core](#milestone-3-identity-expansion--authentication-core) | 2-4 weeks | Planned |
 | [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 1-2 weeks | Planned |
 | [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 2-4 weeks | Planned |
 | [Milestone 6: Shared Packages and Contracts](#milestone-6-shared-packages-and-contracts) | 2-3 weeks | Planned |
@@ -64,36 +64,35 @@ Milestone review checklist:
 - [x] Confirm milestone goal and exit criteria are met.
 - [x] Update roadmap items and mark completed tasks.
 
-## Milestone 2: Identity and Common Scaffolding
+## Milestone 2: Common + Identity Foundations
 
-Goal: Establish core backend domain scaffolding (common + identity) so migrations
-and base models are ready before authentication flows are added.
+Goal: Establish foundational domain scaffolding (common + identity) with the
+custom user model and shared base models, without coupling to IAM/RBAC or
+auth flows yet.
 
 Checklist:
 - Docs/Standards
-  - [ ] ADR: custom user model strategy (AbstractUser vs AbstractBaseUser).
-  - [ ] ADR: tenant + entry point data model.
+  - [x] ADR: custom user model + base model strategy.
 - Backend
-  - [ ] Implement `common` domain app (shared utilities, health checks).
-  - [ ] Implement `identity` domain app (custom user model, tenants, entry points).
-  - [ ] Define custom user model before initial migrations are created.
-  - [ ] Create initial migrations for identity domain models.
+  - [x] Implement `common` domain app (base models, shared utilities, health checks).
+  - [x] Implement `identity` domain app (custom user model + minimal profile placeholder).
+  - [x] Configure `AUTH_USER_MODEL` and register `identity` app in settings.
 
 Exit criteria:
-- Common and identity apps are scaffolded with initial migrations.
+- Common and identity apps are scaffolded with base models and custom user model.
 - Health checks and base utilities are available for future endpoints.
 
 Milestone review checklist:
-- [ ] Review docs for consistency and cross-links.
-- [ ] Update ADRs for new decisions.
-- [ ] Verify scripts/configs align with documented standards.
-- [ ] Confirm milestone goal and exit criteria are met.
-- [ ] Update roadmap items and mark completed tasks.
+- [x] Review docs for consistency and cross-links.
+- [x] Update ADRs for new decisions.
+- [x] Verify scripts/configs align with documented standards.
+- [x] Confirm milestone goal and exit criteria are met.
+- [x] Update roadmap items and mark completed tasks.
 
-## Milestone 3: Authentication and RBAC Core
+## Milestone 3: Identity Expansion + Authentication Core
 
-Goal: Deliver a working authentication system with tenant/entry-point context and a
-starter RBAC model to unlock secured API access.
+Goal: Expand identity to include IAM providers and deliver a working
+authentication system with entry-point context for secured API access.
 
 Checklist:
 - Security
@@ -104,13 +103,17 @@ Checklist:
   - [ ] ADR: token storage/session strategy (BFF cookies, rotation, CSRF).
   - [ ] ADR: auth provider integration approach (OIDC/SAML).
   - [ ] ADR: JWT claim schema.
+  - [ ] ADR: entry point data model (config + metadata shape).
+  - [ ] ADR: identity readiness/health semantics.
 - Backend
+  - [ ] Implement IAM provider models (provider + external identities).
+  - [ ] Create initial migrations for identity/common domain models.
+  - [ ] Add identity readiness/health endpoint for auth dependencies.
   - [ ] Create entry point metadata endpoint (`/api/v1/identity/portals/<slug>/`).
   - [ ] Implement auth endpoints (`/api/v1/identity/auth/*`).
-  - [ ] Issue JWTs with tenant + entry point context and claims.
-  - [ ] Seed RBAC roles/permissions.
+  - [ ] Issue JWTs with entry point context and claims.
   - [ ] Add audit logging for auth events.
-  - [ ] Disable Django admin and enforce secure defaults.
+  - [x] Disable Django admin and enforce secure defaults.
 - Frontend
   - [ ] Add basic auth client plumbing for login.
 

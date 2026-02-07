@@ -8,9 +8,10 @@
 
 The backend needs a clear, enterprise-aligned authentication baseline that
 supports secure API access, optional enterprise SSO, and user-type policies.
-Tenants can define dynamic login portals (entry points) and map them to user types
-as needed. The current stack is Django + DRF with a roadmap toward multi-portal
-login UX and tenant-specific IAM settings.
+Tenants can define dynamic login portals (entry points) and map them to user
+types as needed; these behaviors represent the target architecture rather than
+current implementation. The current stack is Django + DRF with a roadmap toward
+multi-portal login UX and tenant-specific IAM settings.
 
 ## Decision
 

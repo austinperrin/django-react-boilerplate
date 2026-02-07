@@ -5,7 +5,7 @@ React (JavaScript) app powered by Vite. Serves as the primary user interface lay
 ## Goals
 
 - Single codebase with RBAC-aware feature flags so different user types see the correct UI.
-- Support multiple portal entry points driven by tenant configuration (e.g., `/portal/<user-type>`).
+- Support multiple portal entry points driven by tenant configuration (e.g., `/login/<portal_name>`).
 - Secure-by-default client: strict TypeScript-ready tooling (even if starting in JS), linting, dependency auditing.
 - Pluggable auth flows (username/password, magic links, social, enterprise SSO) backed by backend configuration.
 

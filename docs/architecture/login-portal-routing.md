@@ -6,20 +6,21 @@ Describe how login portals map to frontend routes and entry point configuration 
 
 ## Scope
 
-This document focuses on the login portal route (`/login/<portal_name>`) and the
-entry point configuration fetch. Post-login app routing is handled separately.
+This document focuses on the planned login portal route (`/login/<portal_name>`)
+and the planned entry point configuration fetch. Post-login app routing is
+handled separately.
 
 ## Frontend
 
-- Root path: `/login/:portal_name/*` handled by a top-level router that loads entry point metadata before rendering content.
+- Root path: `/login/:portal_name/*` handled by a top-level router that loads entry point metadata before rendering content (planned).
 - Login portal views live under `services/frontend/src/apps/login/<portal_name>/` (or an equivalent structure).
 - Shared components (forms, branding, helper text) reside in `src/apps/shared` and receive entry point context.
 
 ## Backend
 
-- Entry point definitions stored in database (name, slug, enabled auth methods, default role, feature flags).
-- Endpoint `GET /api/v1/identity/portals/<slug>/` returns entry point configuration consumed by frontend.
-- Middleware ensures each request includes a valid portal slug; otherwise rejects with `400` or redirects to default portal.
+- Entry point definitions stored in database (name, slug, enabled auth methods, default role, feature flags) (planned).
+- Endpoint `GET /api/v1/identity/portals/<slug>/` returns entry point configuration consumed by frontend (planned).
+- Middleware ensures each request includes a valid portal slug; otherwise rejects with `400` or redirects to default portal (planned).
 
 ## Sequence
 

@@ -1,5 +1,7 @@
 # Identity & Access Management Strategy
 
+This document describes the target IAM architecture and planned capabilities.
+
 ## User Store
 
 - Default to Django auth models (User, Group, Permission) extended via profiles for tenant-specific data.
