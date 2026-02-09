@@ -11,9 +11,9 @@ updated as scope, decisions, and timelines evolve.
 | --- | --- | --- |
 | [Milestone 1: Repository and Baseline Setup](#milestone-1-repository-and-baseline-setup) | 2-3 weeks | Completed |
 | [Milestone 2: Common + Identity Foundations](#milestone-2-common--identity-foundations) | 2-3 weeks | Completed |
-| [Milestone 3: Identity Expansion + Authentication Core](#milestone-3-identity-expansion--authentication-core) | 2-4 weeks | Planned |
-| [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 1-2 weeks | Planned |
-| [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 2-4 weeks | Planned |
+| [Milestone 3: Identity Expansion + Authentication Core](#milestone-3-identity-expansion--authentication-core) | 3-5 weeks | Planned |
+| [Milestone 4: Login Portal UX](#milestone-4-login-portal-ux) | 2-3 weeks | Planned |
+| [Milestone 5: Post-Login UX + RBAC Enforcement](#milestone-5-post-login-ux--rbac-enforcement) | 3-5 weeks | Planned |
 | [Milestone 6: Shared Packages and Contracts](#milestone-6-shared-packages-and-contracts) | 2-3 weeks | Planned |
 | [Milestone 7: Automation and CI/CD](#milestone-7-automation-and-cicd) | 1-2 weeks | Planned |
 | [Milestone 8: Infrastructure and Deployment](#milestone-8-infrastructure-and-deployment) | 2-4 weeks | Planned |
@@ -99,14 +99,15 @@ Checklist:
   - [x] Document RBAC roles/permissions and auth policies.
   - [x] Document IAM strategy (MFA, SSO requirements).
 - Docs/Standards
+  - [ ] ADR: JWT claim schema (blocker for downstream work).
+  - [ ] ADR: entry point data model (config + metadata shape) (blocker for downstream work).
   - [ ] ADR: MFA enforcement model (tenant-required vs user opt-in).
   - [ ] ADR: token storage/session strategy (BFF cookies, rotation, CSRF).
   - [ ] ADR: auth provider integration approach (OIDC/SAML).
-  - [ ] ADR: JWT claim schema.
-  - [ ] ADR: entry point data model (config + metadata shape).
   - [ ] ADR: identity readiness/health semantics.
 - Backend
-  - [ ] Implement IAM provider models (provider + external identities).
+  - [ ] Add dev-only auth mode for local login without external IdPs (non-prod only).
+  - [ ] Implement IAM provider models (core models + local provider implementation).
   - [ ] Create initial migrations for identity/common domain models.
   - [ ] Add identity readiness/health endpoint for auth dependencies.
   - [ ] Create entry point metadata endpoint (`/api/v1/identity/portals/<slug>/`).
@@ -116,9 +117,16 @@ Checklist:
   - [x] Disable Django admin and enforce secure defaults.
 - Frontend
   - [ ] Add basic auth client plumbing for login.
+  - [ ] Add contract fixtures for entry point metadata and auth responses.
+- QA/Testing
+  - [ ] Add seed data + management commands for demo tenant/portal/user.
+  - [ ] Add integration tests for auth endpoints and JWT issuance.
+  - [ ] Add minimal OpenAPI/schema snapshot for auth + entry point endpoints.
 
 Exit criteria:
 - Authenticated API requests are enforced by default.
+- Frontend can log in locally using dev-only auth mode.
+- Auth and entry point contracts are stable and documented.
 
 Milestone review checklist:
 - [ ] Review docs for consistency and cross-links.
@@ -140,7 +148,11 @@ Checklist:
   - [ ] Build portal-specific login UI from entry point config.
   - [ ] Add invalid portal handling and support messaging.
 - QA/Testing
+  - [ ] Add API contract smoke tests for portal config + auth flow.
   - [ ] Add login portal flow smoke tests.
+- Frontend (Optional)
+  - [ ] Add portal config mock fixture for UI development.
+  - [ ] Add component sandbox for login UI (Storybook or dedicated route).
 
 Exit criteria:
 - End-to-end login works for a single login portal.
@@ -163,15 +175,18 @@ Checklist:
   - [x] Document login portal UX expectations and routing conventions.
   - [ ] ADR: post-login route strategy.
   - [ ] ADR: API contracts approach (OpenAPI vs shared types).
+  - [ ] ADR: RBAC claim definitions and role-to-route mapping.
 - Backend
   - [ ] Enforce RBAC permissions on protected endpoints.
+- QA/Testing
+  - [ ] Add RBAC matrix fixtures (roles/permissions/expected access).
+  - [ ] Add permission test harness for backend role access checks.
 - Frontend
   - [ ] Implement post-login app routing.
   - [ ] Add auth/RBAC context provider.
   - [ ] Gate routes and UI based on RBAC claims.
   - [ ] Provide two example post-login app areas to validate structure.
-- QA/Testing
-  - [ ] Add basic post-login routing tests and RBAC checks.
+  - [ ] Use RBAC matrix fixtures for route/UI gating tests.
 - Backend (Optional)
   - [ ] Expose feature flag configuration per entry point or app area.
 - Frontend (Optional)
@@ -180,6 +195,7 @@ Checklist:
 Exit criteria:
 - Two post-login app areas render with distinct navigation and access rules.
 - Unauthorized API/UI actions are blocked consistently.
+- RBAC fixtures are shared across backend and frontend tests.
 
 Milestone review checklist:
 - [ ] Review docs for consistency and cross-links.
